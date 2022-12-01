@@ -1,5 +1,4 @@
-﻿
-using AdapterTemplate.FileWriter;
+﻿using AdapterTemplate.FileWriter;
 using System;
 using System.Collections.Generic;
 
