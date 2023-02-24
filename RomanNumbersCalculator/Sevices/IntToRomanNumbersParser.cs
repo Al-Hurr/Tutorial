@@ -8,7 +8,7 @@ namespace RomanNumbersCalculator.Sevices
     {
         public string Parse(int number)
         {   
-            if(number < 0 || number > 3999)
+            if(number < 1 || number > 3999)
             {
                 throw new Exception($"The result {number} cannot be parsed to Roman numeral");
             }
