@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 namespace Tutorial
@@ -24,39 +23,107 @@ namespace Tutorial
     public class SingleLinkedList<T> : IReadOnlyCollection<T>
     {
         public int Count => _count;
+        public ListNode<T> FirstNode => _firstNode;
+        public ListNode<T> LastNode => _lastNode;
 
         private ListNode<T> _firstNode;
         private ListNode<T> _lastNode;
+
         private int _count;
-
-        //public void Add(T value)
-        //{
-        //    var newNode = new ListNode<T>(value);
-
-        //    if (_firstNode == null)
-        //    {
-        //        _firstNode = newNode;
-        //    }
-        //    else
-        //    {
-        //        _lastNode = new ListNode<T>(_lastNode.Value, newNode);
-        //        _lastNode.;
-        //    }
-
-        //    _count++;
-        //}
 
         public void Add(T newValue)
         {
-            _firstNode = null;
-
-            foreach (T value in this)
+            if(_firstNode == null)
             {
-                _firstNode = new ListNode<T>(value, new ListNode<T>(node.Value));
+                _firstNode = new ListNode<T>(newValue);
+                _lastNode = _firstNode;
             }
-            node = new ListNode<T>(newValue, node);
+            else
+            {
+                _firstNode = RestoreNodeWithAddingValue(_firstNode, newValue);
+            }
+
+            _count++;
         }
 
+        public void Replace(T value, T newValue)
+        {
+            if(_firstNode == null)
+            {
+                return;
+            }
+            else
+            {
+                _firstNode = RestoreNodeListWithReplacing(_firstNode, value, newValue);
+            }
+        }
+
+        public void JoinWith(SingleLinkedList<T> list)
+        {
+            if(list == null)
+            {
+                return;
+            }
+            if(_firstNode == null)
+            {
+                _firstNode = list._firstNode;
+                _count = list.Count;
+                return;
+            }
+            else
+            {
+                _firstNode = RestoreNodeListWithAddingList(_firstNode, list);
+                _count += list.Count;
+            }
+        }
+
+        private ListNode<T> RestoreNodeListWithAddingList(ListNode<T> node, SingleLinkedList<T> list)
+        {
+            if (node.Next == null)
+            {
+                _lastNode = list.LastNode;
+                return new ListNode<T>(node.Value, list.FirstNode);
+            }
+
+            var newNode = RestoreNodeListWithAddingList(node.Next, list);
+
+            return new ListNode<T>(node.Value, newNode);
+        }
+
+        private ListNode<T> RestoreNodeWithAddingValue(ListNode<T> node, T value)
+        {
+            if (node.Next == null)
+            {
+                _lastNode = new ListNode<T>(value);
+                return new ListNode<T>(node.Value, _lastNode);
+            }
+
+            var newNode = RestoreNodeWithAddingValue(node.Next, value);
+
+            return new ListNode<T>(node.Value, newNode);
+        }
+
+        private ListNode<T> RestoreNodeListWithReplacing(ListNode<T> node, T value, T newValue)
+        {
+            if (node.Value?.Equals(value) ?? false)
+            {
+                var returnedNode = new ListNode<T>(newValue, node.Next); 
+                if (node.Next == null)
+                {
+                    _lastNode = returnedNode;
+                }
+                return returnedNode;
+            }
+
+            if (node.Next == null)
+            {
+                return node;
+            }
+
+            var newNode = RestoreNodeListWithReplacing(node.Next, value, newValue);
+
+            return new ListNode<T>(node.Value, newNode);
+        }
 
         public IEnumerator<T> GetEnumerator()
         {

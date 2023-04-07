@@ -16,6 +16,34 @@ namespace Tutorial
     {
         public static void Main(string[] args)
         {
+            var singleLinkedList = new SingleLinkedList<int>();
+
+            // adding
+            singleLinkedList.Add(1);
+            singleLinkedList.Add(2);
+            singleLinkedList.Add(3);
+            singleLinkedList.Add(2);
+            singleLinkedList.Add(4);
+
+            foreach (var value in singleLinkedList)
+            {
+                Console.Write($"{value} ");
+            }
+
+            // replacing
+            singleLinkedList.Replace(1, 5);
+            singleLinkedList.Replace(3, 6);
+            singleLinkedList.Replace(4, 9);
+
+            // joinig
+            var singleLinkedList2 = new SingleLinkedList<int>
+            {
+                11,
+                12,
+                13
+            };
+            singleLinkedList.JoinWith(singleLinkedList2);
+
             //Simple.Start();
             ThreadPoolTutor.Run();
             //Example.Start();
