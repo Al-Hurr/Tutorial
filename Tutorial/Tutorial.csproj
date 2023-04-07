@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Words, Version=22.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
@@ -50,9 +52,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LevenshteinDistance.cs" />
+    <Compile Include="ListNodeExtension.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="School21_Task_01.cs" />
+    <Compile Include="StartThreads.cs" />
+    <Compile Include="TasksTutuor.cs" />
+    <Compile Include="ThreadPoolTutor.cs" />
+    <Compile Include="ThreadSleepExample.cs" />
     <Compile Include="WarZone.cs" />
     <Compile Include="Word\WordTest.cs" />
   </ItemGroup>

@@ -45,7 +45,7 @@ namespace RomanNumbersCalculator.Sevices
 
                 var rhs = ParseMultiplyDivide();
 
-                lhs = new NodeBinary(lhs, rhs, op);
+                lhs = new NodeBinarys(lhs, rhs, op);
             }
         }
 

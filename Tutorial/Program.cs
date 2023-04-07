@@ -14,15 +14,38 @@ namespace Tutorial
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            string str1 = "sunday";
-            string str2 = "saturday";
+            //Simple.Start();
+            ThreadPoolTutor.Run();
+            //Example.Start();
+            //WarZone.Run();
 
-            LevenshteinDistance.GetLevenshteinDistance(str1, str2);
 
-            WarZone.Run();
-            Console.ReadLine();
+            //School21_Task_01.Run();
+
+            //string str1 = "sunday";
+            //string str2 = "saturday";
+
+            //LevenshteinDistance.GetLevenshteinDistance(str1, str2);
+
+            //Console.ReadLine();
+
+            Console.WriteLine("End of main method");
+        }
+    }
+    public class BaseClass
+    {
+        public virtual void DoWork()
+        {
+            Console.WriteLine("BaseClass.DoWork()");
+        }
+    }
+    public class DerivedClass : BaseClass
+    {
+        public override void DoWork()
+        {
+            Console.WriteLine("DerivedClass.DoWork()");
         }
     }
 }
